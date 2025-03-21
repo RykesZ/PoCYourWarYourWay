@@ -1,0 +1,16 @@
+<a [routerLink]="['/']" #backButton>Retour</a>
+<div class="messaging-container">
+  <div class="messages"  #messagesContainer>
+    <div *ngFor="let message of messages" [ngClass]="{'sent': message.idExpediteur === idExpediteur, 'received': message.idDestinataire === idExpediteur}">
+      <div class="message-card">
+        <p>{{ message.contenu }}</p>
+        <small>{{ message.creeLe | date:'short' }}</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input type="text" [(ngModel)]="messageContent" placeholder="Tapez un message" />
+    <button (click)="sendMessage(messageContent)">Envoyer</button>
+  </div>
+</div>

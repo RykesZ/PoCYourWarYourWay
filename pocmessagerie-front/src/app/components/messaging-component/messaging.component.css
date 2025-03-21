@@ -1,0 +1,96 @@
+/* Container général pour la messagerie */
+.messaging-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  height: 90vh;
+  position: relative;
+  padding-bottom: 50px; /* Pour laisser de l'espace pour le bouton d'envoi */
+}
+
+/* Zone des messages */
+.messages {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: scroll;
+  height: 100%;
+  padding : 20px 10px 60px 10px
+}
+
+.sent {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.received {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Style des messages individuels avec bordure */
+.message-card {
+  display: inline-block;
+  padding: 10px;
+  max-width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.sent .message-card {
+  background-color: #d3f8d3; /* Couleur de fond pour les messages envoyés */
+}
+
+.received .message-card {
+  background-color: #f1f1f1; /* Couleur de fond pour les messages reçus */
+}
+
+/* Zone de saisie du message en bas de l'écran */
+.input-area {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour l'input et le bouton */
+input {
+  width: 85%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 10%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input, button {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#backButton {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
