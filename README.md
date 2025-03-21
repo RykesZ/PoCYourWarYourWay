@@ -15,7 +15,7 @@ mvn install
 ```bash
 npm install
 ```
-6. Dans votre base de données PostgreSQL locale, nommée "postgres", exécuter le fichier "Script création BDD PoC" pour crééer la table "messages"
+6. Dans votre base de données PostgreSQL locale, nommée "postgres", exécuter le fichier "Script création BDD PoC" pour créer la table "messages"
 
 # Exécution
 1. Dans le projet "pocmessagerie", lancer la commande
