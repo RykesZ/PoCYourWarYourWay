@@ -19,11 +19,6 @@ public class MessageService {
 
     public List<Message> getMessages(UUID idExpediteur, UUID idDestinataire) {
         return messageRepository.findByIdExpediteurAndIdDestinataireOrIdExpediteurAndIdDestinataireOrderByCreeLeAsc(idExpediteur, idDestinataire);
-
-        // Trier par date de création (les plus anciens en premier)
-        /*return messages.stream()
-                .sorted((m1, m2) -> m1.getCreeLe().compareTo(m2.getCreeLe()))
-                .collect(Collectors.toList());*/
     }
 
     public Message sendMessage(UUID idExpediteur, UUID idDestinataire, String contenu) {
