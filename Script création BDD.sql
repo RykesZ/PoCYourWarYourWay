@@ -1,7 +1,8 @@
 CREATE SCHEMA Utilisateurs;
 CREATE SCHEMA Locations;
 CREATE SCHEMA Agences;
-CREATE SCHEMA Messages;
+CREATE SCHEMA Support;
+CREATE SCHEMA Notifications;
 
 CREATE TABLE Utilisateurs.Utilisateur (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -57,7 +58,7 @@ CREATE TABLE Agences.Agence (
     modifie_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Messages.MessageSynchrone (
+CREATE TABLE Support.MessageSynchrone (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     id_expediteur UUID NOT NULL REFERENCES Utilisateurs.Utilisateur(id) ON DELETE CASCADE,
     id_destinataire UUID NOT NULL REFERENCES Utilisateurs.Utilisateur(id) ON DELETE CASCADE,
@@ -66,11 +67,20 @@ CREATE TABLE Messages.MessageSynchrone (
     modifie_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Messages.MessageAsynchrone (
+CREATE TABLE Support.MessageAsynchrone (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     id_expediteur UUID NOT NULL REFERENCES Utilisateurs.Utilisateur(id) ON DELETE CASCADE,
     id_destinataire UUID NOT NULL REFERENCES Utilisateurs.Utilisateur(id) ON DELETE CASCADE,
     contenu TEXT NOT NULL,
+    cree_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modifie_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Notifications.Notification (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    contenu TEXT NOT NULL,
+    email_destinataire VARCHAR(255) NOT NULL REFERENCES Utilisateurs.Utilisateur(email) ON DELETE CASCADE,
+    telephone_destinataire VARCHAR(20) NOT NULL REFERENCES Utilisateurs.Utilisateur(telephone) ON DELETE CASCADE,
     cree_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modifie_le TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
